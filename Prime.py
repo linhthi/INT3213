@@ -44,15 +44,23 @@ def SieveOfEratosthenes(n):
 
     return prime
 
-# Tim thanh phan nguyen thuy nho nhat cua n
 def primeDivisors(n):
-    prime = SieveOfEratosthenes(n)
     prime_divisor = []
     for i in range(2, n+1):
-        if prime[i] and n % i == 0:
+        if is_prime(i) and n % i == 0:
             prime_divisor.append(i)
-
     return prime_divisor
+
+# List max 5 primeDivisor if n has more than 5
+def prime5Divisors(n):
+    prime_divisor = []
+    for i in range(2, n+1):
+        if is_prime(i) and n % i == 0:
+            prime_divisor.append(i)
+        if len(prime_divisor) == 2:
+            return prime_divisor
+    return prime_divisor
+
 
 
 # Find the smallest primitive root
@@ -61,7 +69,7 @@ def primitiveRoot(n):
     #     return -1
     
     phi = n - 1
-    s = primeDivisors(phi)
+    s = prime5Divisors(phi)
 
     # Check for every number from 2 to phi
     for i in range(2, phi + 1):
@@ -77,6 +85,8 @@ def primitiveRoot(n):
 
 
 # if __name__== '__main__':
-#     n = 761
-#     print(primeDivisors(n))
-#     print(primitiveRoot(n))
+#     n = 10000000000000000051
+#     # a = primeDivisors(n)
+#     # print(primeDivisors(n))
+#     a = primitiveRoot(n)
+#     print(a)

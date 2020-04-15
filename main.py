@@ -9,17 +9,21 @@ from random import randint
 # nk = int(f.readline())
 # base = f.readline()
 
-np = 4
-na = 3
-nk = 3
-base = 'HOANGTHILINH'
+base = 'Dexuatcachlyxahoivoinhomdiaphuongnguycocao'
 
-p = Prime.randomPrime(np)
-a = randint(10 ** (na - 1), 10 ** na - 1)
-k = randint(10 ** (nk - 1), 10 ** nk - 1)
+p = 10**99 + 289
+a = 10**59 + 1
+k = 10**63 + 2
 alpha = Prime.primitiveRoot(p)
-x = Encrypt(base) % p
+print(alpha)
 
+
+# p = Prime.randomPrime(np)
+# a = randint(10 ** (na - 1), 10 ** na - 1)
+# k = randint(10 ** (nk - 1), 10 ** nk - 1)
+# alpha = Prime.primitiveRoot(p)
+x = Encrypt(base) % p
+print(x)
 
 elGamal = ElGamal(p, a, k)
 print(elGamal.beta)
