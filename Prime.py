@@ -25,6 +25,11 @@ def randomPrime(lengthNumber):
         a = randint(start, end)
     return a
 
+def nextPrime(n):
+    while(is_prime(n) == False):
+        n += 1
+    return n
+
 def SieveOfEratosthenes(n): 
       
     # Create a boolean array "prime[0..n]" and initialize 
@@ -84,9 +89,11 @@ def primitiveRoot(n):
     return -1
 
 
-# if __name__== '__main__':
-#     n = 10000000000000000051
-#     # a = primeDivisors(n)
-#     # print(primeDivisors(n))
-#     a = primitiveRoot(n)
-#     print(a)
+if __name__== '__main__':
+    n = 10000000000000000000
+    m = nextPrime(n)
+    print(m)
+    # a = primeDivisors(n)
+    # print(primeDivisors(n))
+    # a = primitiveRoot(n)
+    # print(a)
