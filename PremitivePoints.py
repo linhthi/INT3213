@@ -1,4 +1,4 @@
-def findRoot(p,a,b):
+def findPrimitivePoints(p,a,b):
     k = int((p+1) / 2)
     Q = set()
     E = []
@@ -24,5 +24,5 @@ def findRoot(p,a,b):
 
 
 
-findRoot(571, 28, 23)
+findPremitivePoints(571, 28, 23)
 
