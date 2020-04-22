@@ -1,4 +1,4 @@
-def findPrimitivePoints(p,a,b):
+def findPrimitivePoint(p,a,b):
     k = int((p+1) / 2)
     Q = set()
     E = []
@@ -6,7 +6,7 @@ def findPrimitivePoints(p,a,b):
         x = i**2 % p
         Q.add(x)
     
-    print(Q)
+    # print(Q)
 
     for x in range(0, p):
         sqrY = (x**3 + a*x + b) % p
@@ -14,15 +14,11 @@ def findPrimitivePoints(p,a,b):
             for i in range(1, k+1):
                 if i**2 % p == sqrY:
                     E.append((x, i))
-                    E.append((x, p-i))
                     break
-    print(E)
+        if len(E) == 1:
+            return E[0]
 
 
-    # print(52 in Q)
-    # print(Q)
-
-
-
-findPremitivePoints(571, 28, 23)
+# (x, y) = findPrimitivePoint(571, 28, 23)
+# print(x, y)
 
