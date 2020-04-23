@@ -1,6 +1,7 @@
 
 import csv
 from PrimitivePoints import findPrimitivePoint
+
 # Extended Euclidean algorithm
 def extended_gcd(aa, bb):
    lastremainder, remainder = abs(aa), abs(bb)
@@ -56,30 +57,34 @@ def double_and_add(multi, generator, p, a):
 if __name__== '__main__':
    rows = []
    p = 751
-   a = 28
-   b = 20
-   (x1, y1) = findPrimitivePoint(p,a,b) 
+   a = -1
+   b = 188
+   (x1, y1) = (0, 376) # primitive point 
    x2 = x1
    y2 = y1
    for k in range(2, 770):
-      s = 0
-      if (x1==x2):
-         s = ((3*(x1**2) + a) * modinv(2*y1, p))%p
-      else:
-         s = ((y2-y1) * modinv(x2-x1, p))%p
-      x3 = (s**2 - x1 - x2)%p
-      y3 = (s*(x1 - x3) - y1)%p
-      print('{0}Q: {1} {2} {3}'.format(k, s, x3, y3))
-      row = [k, s, x3, y3, '({0}, {1})'.format(x3, y3)]
-      rows.append(row)
-      x1 = x3
-      y1 = y3
+      try:
+         s = 0
+         if (x1==x2 and y1 == y2):
+            s = ((3*(x1**2) + a) * modinv(2*y1, p))%p
+         else:
+            s = ((y2-y1) * modinv(x2-x1, p))%p
+         x3 = (s**2 - x1 - x2)%p
+         y3 = (s*(x1 - x3) - y1)%p
+         print('{0}Q: {1} {2} {3}'.format(k, s, x3, y3))
+         row = [k, s, x3, y3, '({0}, {1})'.format(x3, y3)]
+         rows.append(row)
+         x1 = x3
+         y1 = y3
+      except Exception as e:
+         row = [k, None, None, None, 0]
+         rows.append(row)
+         break
 
    filename = 'kG.csv'
-   fieldnames = ['k', 'lamda', 'x3', 'y3', 'kG = (x3, y3)']
+   fieldnames = ['k', 'lambda', 'x3', 'y3', 'kG = (x3, y3)']
 
    with open(filename, 'w') as csvfile:
       csvwriter = csv.writer(csvfile)  
       csvwriter.writerow(fieldnames)   
       csvwriter.writerows(rows) 
-
